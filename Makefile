@@ -2,7 +2,7 @@ build:
 	go build .
 
 run:
-	go run .
+	./systems-assignment --url=http://cloudflare-workers.akhtariev.workers.dev:80/links
 
 clean :
 		rm systems-assignment
