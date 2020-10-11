@@ -26,4 +26,4 @@ Possible flag combinations:
 
 ### Note on `--profile`
 
-- Measures the time elapsed from before the beginning of the write to socket and up until the receival of the last packet of data.
+- Measures the time elapsed from before the beginning of the write to socket and up until the receival of the first token (as per Scanner.Scan)
