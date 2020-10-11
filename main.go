@@ -77,9 +77,6 @@ func main() {
 	u, err := url.Parse(*urlPtr)
 	checkError(err)
 
-	conn, err := net.Dial("tcp", u.Hostname()+":"+u.Port())
-	checkError(err)
-
 	var path string
 	if u.EscapedPath() == "" {
 		path = "/"
@@ -109,8 +106,10 @@ func main() {
 	var maxLength string
 
 	for i := 0; i < profileCount; i++ {
+		conn, err := net.Dial("tcp", u.Hostname()+":"+u.Port())
+		checkError(err)
 		start = time.Now()
-		_, err = conn.Write([]byte("GET " + path + " HTTP/1.0\r\nHost: " + u.Hostname() + "\r\n\r\n"))
+		_, err = conn.Write([]byte("GET " + path + " HTTP/1.1\r\nHost: " + u.Hostname() + "\r\nAccept: application/json\r\nConnection: close\r\n\r\n"))
 		checkError(err)
 
 		scanner := bufio.NewScanner(conn)
@@ -157,6 +156,8 @@ func main() {
 		for scanner.Scan() {
 			fmt.Println(scanner.Text())
 		}
+		conn.Close()
+		fmt.Println("")
 	}
 
 	if *profilePtr > 0 {

@@ -8,6 +8,7 @@ This exercise is a follow-on to the [General Assignment](https://github.com/clou
 
 - Written in Go
 - Implemented via sockets to perform HTTP GET request
+- Keep-alive is not used. Connection was hanging for some reason when after receiving the header and waiting for the body
 
 ## To build
 - Run `make`
