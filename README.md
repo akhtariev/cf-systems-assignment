@@ -17,7 +17,7 @@ This exercise is a follow-on to the [General Assignment](https://github.com/clou
 - Run `make run` to make a request to `http://cloudflare-workers.akhtariev.workers.dev:80/links`
 - Run `systems-assignment` executable with the following flags:
 
-`--url`       String  full URL. e.g. https://example.org:80/path
+`--url`       String  full URL. Must include port. e.g. https://example.org:80/path
 `--profile`   Int     positive integer for the number of requests to profile
 
 Possible flag combinations:
@@ -28,3 +28,23 @@ Possible flag combinations:
 ### Note on `--profile`
 
 - Measures the time elapsed from before the beginning of the write to socket and up until the receival of the first token (as per Scanner.Scan)
+
+## Screenshots
+
+##### Cloudflare
+- `http://cloudflare-workers.akhtariev.workers.dev:80/links`
+
+  ![](/screenshots/cloudflare.PNG)
+
+  
+
+##### Other
+- `http://jsonplaceholder.typicode:80.com/todos/1`
+
+![](/screenshots/other.PNG)
+
+
+
+## Observations ##
+
+Cloudflare's response is 6 times bigger but it is approximately as performant as the other server. Moreover, it is faster in the best case

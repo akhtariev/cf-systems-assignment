@@ -136,7 +136,7 @@ func main() {
 		if currentDurationMs < minDuration {
 			minDuration = currentDurationMs
 		}
-		durations[i] = currentDurationMs
+        durations[i] = currentDurationMs
 
 		// Scan over the header until CRLF (according to RFC)
 		for scanner.Scan() {
@@ -161,10 +161,11 @@ func main() {
 	}
 
 	if *profilePtr > 0 {
-		sort.Sort(durations)
+        sort.Sort(durations)
+
 		var median int64
 		if len(durations)%2 == 0 {
-			median = (durations[profileCount/2] - durations[profileCount/2-1]) / 2
+			median = (durations[profileCount/2] + durations[profileCount/2-1]) / 2
 		} else {
 			median = durations[profileCount/2]
 		}
